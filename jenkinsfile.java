@@ -3,7 +3,7 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
         }
 
-        agent { label 'jenkins-slave-team-A'}
+        agent any
 
         tools {
         maven 'maven_3.9.4'
@@ -15,7 +15,7 @@ pipeline {
         echo 'Code Compilation Is In Progress!'
         sh 'mvn clean compile'
         echo 'Code Compilation is Completed Successfully!'
-        }
+        }        
         }
         stage('Code QA Execution') {
         steps {
@@ -31,4 +31,4 @@ pipeline {
         }
         }
         }
-        }
+}
